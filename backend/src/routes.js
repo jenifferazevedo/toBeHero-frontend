@@ -65,4 +65,9 @@ routes.delete('/incidents/:id', celebrate({
   })
 }),IncidentController.delete);
 
+routes.delete('/profile', celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.string().required(),
+  }).unknown(),
+}),ProfileController.delete);
 module.exports = routes;
