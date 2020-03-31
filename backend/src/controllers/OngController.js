@@ -34,9 +34,9 @@ module.exports = {
       return res.json({ id });
     }
     if(nDeOngs < 6) {
-       emailOngs.map(e => e.email === email).includes(true) ? res.status(400).json(`Já há uma ONG cadastrada com esse ${email}`) : creating();
+       emailOngs.map(e => e.email === email).includes(true) ? res.status(400).json({ error: `There is already an NGO registered with this email: ${email}.`}) : creating();
     } else {
-      return res.status(401).json(`Numéro de cadastros exedidos! Há ${nDeOngs} ongs cadastradas!`);
+      return res.status(401).json({ error: `Number of entries exceeded! There are ${nDeOngs} ONGs registered!`});
     }
   }
 }
