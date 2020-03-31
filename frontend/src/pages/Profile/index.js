@@ -1,6 +1,6 @@
 import React, { useState ,useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2, FiMenu } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
 import logoImg from '../../assets/logo.svg';
@@ -42,13 +42,19 @@ export default function Profile() {
   return (
   <div className="profile-container">
     <header>
+      <div>
       <img src={logoImg} alt="Be The Hero" />
       <span>Bem vinda, {ongName}</span>
+      </div>
+      <div className="menuOptions show">
+      <FiMenu className="menuIcon" size={30} color= "#858594" />
 
       <Link className="button" to="/incidents/new">Cadastrar novo caso</Link>
       <button type="button" onClick={handleLogout}>
         <FiPower size={18} color="#E02041" />
       </button>
+      </div>
+        
     </header>
     <h1>Casos cadastrados</h1>
 
