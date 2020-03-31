@@ -18,6 +18,9 @@ routes.post('/session', celebrate({
 //Rota para ver ongs cadastradas
 routes.get('/ongs', OngController.index);
 
+routes.get('/ongs', OngController.list);
+
+
 //Rota para criar ongs
 routes.post('/ongs', celebrate({
   [Segments.BODY]: Joi.object().keys({
