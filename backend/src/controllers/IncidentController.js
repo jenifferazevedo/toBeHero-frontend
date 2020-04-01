@@ -26,15 +26,20 @@ module.exports = {
   async create(req, res) {
     const { title, description, value } = req.body;
     const ong_id = req.headers.authorization;
+    const [ count ] = await connection('incidents').where('ong_id', ong_id).count()
+    const casos = count['count(*)'];
 
-    const [id] = await connection('incidents').insert({
-      title,
-      description,
-      value,
-      ong_id,
-    });
-
-    return res.json({ id });
+    if(casos < 11) {
+      const [id] = await connection('incidents').insert({
+        title,
+        description,
+        value,
+        ong_id,
+      })
+      return res.json({ id })
+    } else {
+      return res.status(401).json(`O número de casos foi exedido! Já há ${casos}.`);
+    }
   },
 
   async delete(req, res) {

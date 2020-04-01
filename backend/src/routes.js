@@ -18,6 +18,9 @@ routes.post('/session', celebrate({
 //Rota para ver ongs cadastradas
 routes.get('/ongs', OngController.index);
 
+routes.get('/ongs', OngController.list);
+
+
 //Rota para criar ongs
 routes.post('/ongs', celebrate({
   [Segments.BODY]: Joi.object().keys({
@@ -62,4 +65,9 @@ routes.delete('/incidents/:id', celebrate({
   })
 }),IncidentController.delete);
 
+routes.delete('/profile', celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.string().required(),
+  }).unknown(),
+}),ProfileController.delete);
 module.exports = routes;

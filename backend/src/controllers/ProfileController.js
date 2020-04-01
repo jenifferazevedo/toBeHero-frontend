@@ -7,4 +7,11 @@ module.exports = {
 
     return res.json(incidents);
   },
+
+  async delete(req, res) {
+    const ong_id = req.headers.authorization;
+    const ong = await connection('ongs').where('id', ong_id).delete();
+
+    return res.json('Apagado');
+  }
 }

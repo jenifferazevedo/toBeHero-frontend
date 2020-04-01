@@ -1,6 +1,6 @@
 import React, { useState ,useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2, FiMenu, FiX } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
 import logoImg from '../../assets/logo.svg';
@@ -10,7 +10,7 @@ export default function Profile() {
   const history = useHistory();
   const ongId = localStorage.getItem('ongId');
   const ongName = localStorage.getItem('ongName');
-  
+
   useEffect(() => {
     api.get('profile', {
       headers: {
@@ -18,6 +18,25 @@ export default function Profile() {
       }
     }).then( response => {
       setIncidents(response.data);
+    });
+    let show = true;
+    const menuIcon = document.querySelector(".menuIcon");
+    const menuToggle = document.querySelector(".menuTogle");
+    const menuIconClose = document.querySelector(".menuIconClose");
+    menuIcon.addEventListener('click', () => {
+      document.body.style.overflow = show ? "hidden" : "initial"
+      menuToggle.classList.add("on", show)
+      menuIcon.style.display = "none"
+    })
+    menuIconClose.addEventListener('click', () => {
+      menuToggle.classList.add('close')
+      document.body.style.overflow = "initial"
+    })
+    menuToggle.addEventListener('animationend', (event) => {
+      if(event.animationName === "closed") {
+        menuToggle.classList.remove("on", "true", "close")
+        menuIcon.style.display = "block"
+      }
     })
   }, [ongId]);
 
@@ -42,13 +61,21 @@ export default function Profile() {
   return (
   <div className="profile-container">
     <header>
+      <img className="logoShow" src={logoImg} alt="Be The Hero" />
+      <FiMenu className="menuIcon" size={30} color= "#858594" />
+      <nav className="menuTogle">
+      <FiX className="menuIconClose" size={30} color= "#545454" />
       <img src={logoImg} alt="Be The Hero" />
       <span>Bem vinda, {ongName}</span>
-
+      <div className="menuOptions">
       <Link className="button" to="/incidents/new">Cadastrar novo caso</Link>
+      <Link className="button" to="/profile/option">Opções da conta</Link>
       <button type="button" onClick={handleLogout}>
         <FiPower size={18} color="#E02041" />
       </button>
+      </div>
+      </nav>
+        
     </header>
     <h1>Casos cadastrados</h1>
 

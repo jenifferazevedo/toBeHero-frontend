@@ -7,9 +7,20 @@
 
 .profile-container header {
   display: flex;
-  align-items: center;
 }
 
+.profile-container header .logoShow {
+  display: none;
+}
+.profile-container header nav.menuTogle{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.profile-container header nav.menuTogle .menuOptions {
+  display: flex;
+  margin-left: auto;
+}
 .profile-container header span {
   font-size: 20px;
   margin-left: 24px;
@@ -20,23 +31,38 @@
 }
 
 .profile-container header a {
-  width: 260px;
-  margin-left: auto;
+  width: 80%;
   margin-top: 0;
 }
 
 .profile-container header button {
   height: 60px;
-  width: 60px;
+  width: 120px;
   border-radius: 4px;
   border: 1px solid #dcdce6;
   background: transparent;
   margin-left: 16px;
   transition: border-color 0.2s;
 }
+.profile-container header a:nth-child(1) {
+  width: 80%;
+  min-width: 200px;
+}
+.profile-container header a:nth-child(2) {
+  margin-left: 15px;
+  min-width: 150px;
+}
 
-.profile-container header button:hover {
+.profile-container header nav.menuTogle .menuOptions button:hover {
   border-color: #999;
+}
+
+.profile-container header .menuIcon {
+  display: none;
+}
+
+.profile-container header nav.menuTogle .menuIconClose {
+  display: none;
 }
 
 .profile-container h1 {
@@ -85,4 +111,124 @@
   color: #737380;
   line-height: 21px;
   font-size: 16px;
+}
+
+@media (max-width: 767.98px) {
+  .profile-container ul {
+    grid-template-columns: 1fr;
+  }
+  .profile-container header .menuTogle {
+    flex-wrap: wrap;
+  }
+  .profile-container header .menuTogle .menuOptions {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 620px) {
+  .profile-container header .logoShow {
+    display: flex;
+  }
+  .profile-container header div:nth-child(1) {
+    width: 100%;
+  }
+  .profile-container header span {
+    margin-left: 5px;
+  }
+  .profile-container .menuOptions {
+    display: none;
+  }
+  .profile-container header .menuIcon {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: content-box;
+    transition: ease-in-out;
+    z-index: 2;
+    display: block;
+  }
+  .profile-container header .menuIcon:hover {
+    opacity: 0.7;
+    transition: ease-in;
+  }
+  .profile-container header nav.menuTogle {
+    display: none;
+  }
+  .profile-container header nav.menuTogle.on {
+    position: absolute;
+    width: 80vw;
+    height: 100vh;
+    background-color: #e4e4e4;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 5;
+    padding: 50px 30px 10px 30px;
+    animation-name: left;
+    animation-duration: 1s;
+  }
+  .profile-container header nav.menuTogle.close {
+    animation-name: closed;
+    animation-duration: 1s;
+  }
+
+  .profile-container header nav.menuTogle.on .menuOptions{
+    width: auto;
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile-container header nav.menuTogle .menuIconClose {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: content-box;
+    z-index: 2;
+    display: block;
+  }
+  .profile-container header nav.menuTogle .menuIconClose:hover {
+    opacity: 0.5;
+    transition: opacity ease-in;
+  }
+  .profile-container header a:nth-child(2) {
+    margin: 10px 0;
+    min-width: 200px;
+  }
+  .profile-container header nav.menuTogle.on .menuOptions button  {
+    background-color: #fff;
+    margin: 0;
+    width: 70px;
+  }
+  .profile-container h1 {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+@keyframes closed {
+  from{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-500px);
+    opacity: 0;
+  }
+}
+
+@keyframes left {
+  from{
+    transform: translateX(-500px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
