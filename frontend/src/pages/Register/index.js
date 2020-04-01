@@ -30,7 +30,7 @@ export default function Register() {
       alert(`Seu ID de acesso: ${response.data.id}`);
       history.push('/')
     } catch(err) {
-      alert('Erro no cadastro, tente novamente');
+     alert('Cadastros exedidos! Tente novamente mais tarde!');
     }
   }
   
@@ -64,7 +64,7 @@ export default function Register() {
             onChange={ e => setCity(e.target.value)}/>
             <input placeholder="UF" style={{ width: 80 }} 
             value={uf}
-            onChange={ e => setUf(e.target.value)}/>
+            onChange={ e => setUf(e.target.value.toLocaleUpperCase())}/>
           </div>
           <button className='button' type="submit">Cadastrar</button>
         </form>

@@ -7,23 +7,20 @@
 
 .profile-container header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
-.profile-container header div:nth-child(1) {
+.profile-container header .logoShow {
+  display: none;
+}
+.profile-container header nav.menuTogle{
+  width: 100%;
   display: flex;
   align-items: center;
 }
-
-
-.profile-container .menuOptions {
-  width: 50%;
+.profile-container header nav.menuTogle .menuOptions {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-left: auto;
 }
-
 .profile-container header span {
   font-size: 20px;
   margin-left: 24px;
@@ -34,26 +31,37 @@
 }
 
 .profile-container header a {
-  width: 260px;
-  margin-left: auto;
+  width: 80%;
   margin-top: 0;
 }
 
 .profile-container header button {
   height: 60px;
-  width: 60px;
+  width: 120px;
   border-radius: 4px;
   border: 1px solid #dcdce6;
   background: transparent;
   margin-left: 16px;
   transition: border-color 0.2s;
 }
+.profile-container header a:nth-child(1) {
+  width: 80%;
+  min-width: 200px;
+}
+.profile-container header a:nth-child(2) {
+  margin-left: 15px;
+  min-width: 150px;
+}
 
-.profile-container header button:hover {
+.profile-container header nav.menuTogle .menuOptions button:hover {
   border-color: #999;
 }
 
-.profile-container .menuOptions .menuIcon {
+.profile-container header .menuIcon {
+  display: none;
+}
+
+.profile-container header nav.menuTogle .menuIconClose {
   display: none;
 }
 
@@ -106,28 +114,96 @@
 }
 
 @media (max-width: 767.98px) {
-  /*.profile-container .menuOptions .menuIcon {
-    display: block;
-    position: absolute;
-    right: 30px;
-  }*/
   .profile-container ul {
     grid-template-columns: 1fr;
+  }
+  .profile-container header .menuTogle {
+    flex-wrap: wrap;
+  }
+  .profile-container header .menuTogle .menuOptions {
+    margin-top: 10px;
   }
 }
 
 @media (max-width: 620px) {
-  .profile-container header {
-    flex-wrap: wrap;
+  .profile-container header .logoShow {
+    display: flex;
+  }
+  .profile-container header div:nth-child(1) {
+    width: 100%;
   }
   .profile-container header span {
     margin-left: 5px;
   }
   .profile-container .menuOptions {
-    width: 100%;
+    display: none;
   }
-  .profile-container header .button {
-    margin: 10px 0 10px auto;
+  .profile-container header .menuIcon {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: content-box;
+    transition: ease-in-out;
+    z-index: 2;
+    display: block;
+  }
+  .profile-container header .menuIcon:hover {
+    opacity: 0.7;
+    transition: ease-in;
+  }
+  .profile-container header nav.menuTogle {
+    display: none;
+  }
+  .profile-container header nav.menuTogle.on {
+    position: absolute;
+    width: 80vw;
+    height: 100vh;
+    background-color: #e4e4e4;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 5;
+    padding: 50px 30px 10px 30px;
+    animation-name: left;
+    animation-duration: 1s;
+  }
+  .profile-container header nav.menuTogle.close {
+    animation-name: closed;
+    animation-duration: 1s;
+  }
+
+  .profile-container header nav.menuTogle.on .menuOptions{
+    width: auto;
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile-container header nav.menuTogle .menuIconClose {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: content-box;
+    z-index: 2;
+    display: block;
+  }
+  .profile-container header nav.menuTogle .menuIconClose:hover {
+    opacity: 0.5;
+    transition: opacity ease-in;
+  }
+  .profile-container header a:nth-child(2) {
+    margin: 10px 0;
+    min-width: 200px;
+  }
+  .profile-container header nav.menuTogle.on .menuOptions button  {
+    background-color: #fff;
+    margin: 0;
+    width: 70px;
   }
   .profile-container h1 {
     margin-top: 20px;
@@ -135,27 +211,24 @@
   }
 }
 
-@media (max-width: 420px) {
-  .profile-container {
-    padding: 0 10px;
+@keyframes closed {
+  from{
+    transform: translateX(0);
+    opacity: 1;
   }
-  .profile-container header span {
-    margin-left: 10px;
-    font-size: 16px;
+  to {
+    transform: translateX(-500px);
+    opacity: 0;
   }
-  .profile-container header a{
-  width: 70%;
-  min-width: 160px;
-  font-size: 16px;
-  }
-  .profile-container .button {
-    height: 50px;
-    line-height: 50px;
-    overflow: hidden;
-  }
-  .profile-container header button {
-    height: 50px;
-    width: 50px;
-  }
+}
 
+@keyframes left {
+  from{
+    transform: translateX(-500px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
