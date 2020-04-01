@@ -28,7 +28,7 @@ export default function NewIncident() {
       history.push('/profile');
 
     } catch(err) {
-      alert('Erro ao cadastrar caso, tente novamente.');
+      alert('Número de casos exedido! Exclua algum caso e tente novamente!');
     }
 
   }

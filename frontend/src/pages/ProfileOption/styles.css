@@ -1,4 +1,4 @@
-.register-container {
+.profileOption-container {
   width: 100%;
   max-width: 1120px;
   padding: 10px;
@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.register-container .content {
+.profileOption-container .content {
   width: 100%;
   min-width: 300px;
   padding: 96px;
@@ -17,72 +17,60 @@
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
-.register-container .content section {
+.profileOption-container .content section {
   width: 100%;
   max-width: 380px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.register-container .content section h1 {
+.profileOption-container .content section h1 {
   margin: 65px 0 32px;
   font-size: 32px;
 }
 
-.register-container .content section p {
+.profileOption-container .content section p {
   font-size: 18px;
   color: #737380;
   line-height: 32px;
 }
-
-.register-container .content form {
-  width: 100%;
-  max-width: 450px;
+.profileOption-container .content section .back-link {
+  justify-content: center;
 }
-
-.register-container .content form input {
-  margin-top: 8px;
-}
-
-.register-container .content form .input-group {
-  display: flex;
-}
-
-.register-container .content form .input-group input + input {
-  margin-left: 8px;
-}
-
 
 @media (max-width: 991.98px) {
-  .register-container {
+  .profileOption-container {
     padding: 30px;
   }
 }
 
 @media (max-width: 767.98px) {
-  .register-container {
-    height: 100%;
+  .profileOption-container {
+    height: 100vh;
   }
-  .register-container .content {
+  .profileOption-container .content {
     flex-direction: column;
     padding: 20px;
     margin: 10px 0;
     height: 100%;
   }
-  .register-container .content section h1 {
+  .profileOption-container .content section h1 {
     margin-top: 5px;
   }
-  .register-container .back-link {
+  .profileOption-container .back-link {
     margin: 10px auto;
     justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
-  .register-container {
+  .profileOption-container {
     padding: 10px 15px;
   }
 }
-
