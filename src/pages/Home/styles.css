@@ -1,0 +1,137 @@
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.background::after {
+  content: '';
+  line-height:0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height:0;
+  border-style: solid;
+  border-color: #E02041 #f0f0f5  #f0f0f5 #E02041;
+  border-width: 45vh 50vw;
+  z-index: -1;
+  opacity: 0.8;
+}
+.background nav {
+  background-color: #f0f0f5;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+.background nav img {
+  width: 15%;
+  min-width: 140px;
+  padding: 10px;
+}
+.background nav div {
+  display: flex;
+  width: 100%;
+}
+.background nav .button {
+  width: 40%;
+  max-width: 200px;
+  margin: 10px 0;
+  margin-left: auto;
+  background-color: none;
+}
+.background nav svg {
+  margin: 20px;
+  border: 3px solid #E02041;
+  border-radius: 50%;
+}
+.background nav svg:hover {
+  opacity: 0.6;
+  transition: opacity 0.8s;
+}
+.home-container {
+  width: 100%;
+  min-width: 300px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.home-container .content {
+width: 100%;
+height: 100%;
+margin-top: 120px;
+}
+.home-container .content h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 32px;
+  color: #f0f0f5;
+  text-shadow: 1px 1px 8px #000;
+  padding: 0 20px;
+  margin: 100px 0 50px 0;
+}
+
+.home-container ul {
+  margin: 20px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+  list-style: none;
+}
+
+.home-container ul li {
+  background: #FFF;
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.274);
+}
+.home-container ul li h3 {
+  font-size: 20px;
+  color: #E02041;
+}
+.home-container ul li p {
+  padding: 3px 0 10px 0;
+}
+.home-container ul li div {
+  display: flex;
+  flex-direction: column;
+}
+.home-container ul li div p {
+  display: flex;
+  align-items: center;
+}
+.home-container ul li div p span{
+  margin-left: 3px;
+}
+
+.home-container button {
+  border: none;
+  background-color: none;
+  width: 100%;
+  margin: 10px auto;
+}
+
+@media (max-width: 767.98px) {
+  .home-container ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .background nav .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .background nav .button {
+    line-height: 1.2;
+    padding-top: 10px;
+  }
+}
