@@ -83,7 +83,11 @@ margin-top: 120px;
   grid-gap: 24px;
   list-style: none;
 }
-
+.home-container ul h2 {
+  color: #f0f0f5;
+  text-shadow: 1px 1px 8px #000;
+  text-align: center;
+}
 .home-container ul li {
   background: #FFF;
   padding: 24px;
@@ -112,7 +116,7 @@ margin-top: 120px;
 
 .home-container button {
   border: none;
-  background-color: none;
+  background-color: transparent;
   width: 100%;
   margin: 10px auto;
 }

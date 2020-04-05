@@ -48,7 +48,7 @@ export default function Home() {
         <h1>Ajude em um caso e seja um herói! </h1>
       </div>
       <ul>
-      {incidents.map(incident => (
+      {incidents ? incidents.map(incident => (
         <li key={incident.id}>
           <h3>{incident.name}</h3>
           <br />
@@ -63,7 +63,7 @@ export default function Home() {
           <p><FiMail size={25} color="#0026ff" /><span>{incident.email}</span></p>
           </div>
         </li>
-      ))}
+      )) : <h2>Carregando casos, aguarde...</h2>}
       </ul>
       <button onClick={() => loadIncidents()}><FiPlusCircle size={30} color= "#E02041" /></button>
       </div>
